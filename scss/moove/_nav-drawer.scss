@@ -115,6 +115,10 @@
     }
 }
 
+#nav-drawer[aria-hidden=true] .list-group-item {
+    display: inherit;
+}
+
 #nav-drawer.closed {
     overflow: visible;
     width: 70px;
