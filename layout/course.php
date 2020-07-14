@@ -40,6 +40,9 @@ if (isloggedin()) {
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 
+$postblockshtml = $OUTPUT->blocks('side-post');
+$topblockshtml = $OUTPUT->blocks('top');
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
@@ -60,6 +63,8 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'sidepreblocks' => $blockshtml,
+    'sidepostblocks' => $postblockshtml,
+    'topblocks' => $topblockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,
     'hasdrawertoggle' => true,
@@ -79,7 +84,7 @@ $themesettings = new \theme_moove\util\theme_settings();
 $templatecontext = array_merge($templatecontext, $themesettings->footer_items());
 
 if (!$coursepresentation || $coursepresentation == 1) {
-    echo $OUTPUT->render_from_template('theme_moove/columns2', $templatecontext);
+    echo $OUTPUT->render_from_template('theme_moove/course', $templatecontext);
 } else if ($coursepresentation == 2) {
     echo $OUTPUT->render_from_template('theme_moove/course_cover', $templatecontext);
 }
