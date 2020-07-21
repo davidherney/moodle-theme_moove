@@ -105,14 +105,14 @@ $THEME->layouts = [
     // Course page.
     'course' => array(
         'file' => 'course.php',
-        'regions' => array('side-pre', 'side-post'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),
     // Internal course modules page.
     'incourse' => array(
         'file' => 'incourse.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),

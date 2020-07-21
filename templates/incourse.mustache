@@ -80,6 +80,11 @@
                 </div>
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main">
+
+                    <section id="top-blocks" class="d-print-none">
+                        {{{ topblocks }}}
+                    </section>
+
                     <div class="card">
                         <div class="card-body">
                             {{#hasregionmainsettingsmenu}}
@@ -90,6 +95,11 @@
                             {{{ output.course_content_footer }}}
                         </div>
                     </div>
+
+                    <section id="sidepost-blocks" class="d-print-none">
+                        {{{ sidepostblocks }}}
+                    </section>
+
                 </section>
             </div>
             {{#hasblocks}}
