@@ -67,6 +67,30 @@
                         {{{ topblocks }}}
                     </section>
 
+                    {{#customcourseheader}}
+                        <div class="customcourseheader">
+                            <div class="customcourseheader_buttons">
+                            {{#options}}
+                                <a href="{{url}}" target="{{target}}" alt="{{name}}" class="{{cssclass}}">
+                                    {{name}}
+                                </a>
+                            {{/options}}
+                            </div>
+                            <div class="customcourseheader_banner">
+                                <div class="coursename">{{coursename}}</div>
+                                {{#teachername}}
+                                <div class="teacherinfo">
+                                    <label>{{#str}}teacherlabel, theme_moove{{/str}}</label>
+                                    <span>{{teachername}}</span>
+                                </div>
+                                <div class="teacherimage">
+                                    <img src="{{teacherimage}}" title="{{teachername}}" />
+                                </div>
+                                {{/teachername}}
+                            </div>
+                        </div>
+                    {{/customcourseheader}}
+
                     <div class="card">
 
                         <div class="card-body">
@@ -74,6 +98,7 @@
                             {{#hasregionmainsettingsmenu}}
                                 <div class="region_main_settings_menu_proxy"></div>
                             {{/hasregionmainsettingsmenu}}
+
                             {{{ output.course_content_header }}}
                             {{{ output.main_content }}}
                             {{{ output.activity_navigation }}}
@@ -84,6 +109,14 @@
                     <section id="sidepost-blocks" class="d-print-none">
                         {{{ sidepostblocks }}}
                     </section>
+
+                    {{#customcategorybanner}}
+                        {{#src}}
+                        <div class="customcategorybanner">
+                            <img src="{{src}}" alt="{{name}}" title="{{name}}" />
+                        </div>
+                        {{/src}}
+                    {{/customcategorybanner}}
                 </section>
             </div>
         </div>

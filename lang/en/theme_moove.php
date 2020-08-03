@@ -237,3 +237,23 @@ $string['details'] = 'Details';
 $string['startedon'] = 'Started on';
 $string['addcontact'] = 'Add contact';
 $string['removecontact'] = 'Remove contact';
+
+$string['custombanner'] = 'Enable custom banner';
+$string['custombannerdesc'] = '';
+$string['custombannersettings'] = 'Custom banner';
+$string['custombannersettingsdesc'] = '';
+$string['customcategories'] = 'Custom categories';
+$string['customcategoriesdesc'] = 'Use the structure: categoryid|bannerurl';
+$string['custommenuoptions'] = 'Custom menu options';
+$string['custommenuoptionsdesc'] = 'Use the structure: capability|type|link|target|label|cssclass.<br />
+- capability can be * to all users.<br />
+- types available: url or mod_modulename (mod_forum, mod_assign, mod_quiz and others)<br />
+- link can use {courseid} as a key. If type is mod_* can be "firstchild" for display only the first child. If type is url can be a relative or absolute url.<br />
+- link target: _blank, _self or other anchor target option, can be empty to<br />
+- firstchild: true or false';
+$string['teacherlabel'] = 'Teacher:';
+$string[''] = '';
+$string[''] = '';
+$string[''] = '';
+$string[''] = '';
+$string[''] = '';
