@@ -747,4 +747,36 @@ if ($ADMIN->fulltree) {
     $settingpage->add($setting);
 
     $settings->add($settingpage);
+
+    // Custom settings.
+    $page = new admin_settingpage('theme_moove_custombanner', get_string('custombannersettings', 'theme_moove'));
+
+    $page->add(new admin_setting_heading('theme_moove_custombannerheading', null,
+            format_text(get_string('custombannersettingsdesc', 'theme_moove'), FORMAT_MARKDOWN)));
+
+    // Enable custom template.
+    $name = 'theme_moove/custombanner';
+    $title = get_string('custombanner', 'theme_moove');
+    $description = get_string('custombannerdesc', 'theme_moove');
+    $default = 0;
+    $setting = new admin_setting_configcheckbox($name, $title, $description, $default);
+    $page->add($setting);
+
+    $name = 'theme_moove/customcategories';
+    $title = get_string('customcategories', 'theme_moove');
+    $description = get_string('customcategoriesdesc', 'theme_moove');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    $name = 'theme_moove/custommenuoptions';
+    $title = get_string('custommenuoptions', 'theme_moove');
+    $description = get_string('custommenuoptionsdesc', 'theme_moove');
+    $default = '';
+    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    $settings->add($page);
 }

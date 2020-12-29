@@ -102,7 +102,7 @@ $THEME->layouts = [
     // Main course page.
     'course' => array(
         'file' => 'course.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),
@@ -114,7 +114,7 @@ $THEME->layouts = [
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
         'file' => 'incourse.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),
