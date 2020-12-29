@@ -69,7 +69,8 @@ $themesettings = new \theme_moove\util\theme_settings();
 
 $templatecontext = array_merge($templatecontext, $themesettings->footer_items());
 
-if (is_siteadmin() && $PAGE->pagetype == 'my-index') {
+if ((is_siteadmin() || has_capability('moodle/my:configsyspages', context_system::instance()))
+        && $PAGE->pagetype == 'my-index') {
     $adminifos = new \theme_moove\util\admininfos();
 
     $templatecontext['totalusage'] = $adminifos->get_totaldiskusage();
