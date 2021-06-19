@@ -96,13 +96,13 @@ $THEME->layouts = [
     // Standard layout with blocks, this is recommended for most pages with general information.
     'standard' => array(
         'file' => 'columns2.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
     ),
     // Main course page.
     'course' => array(
         'file' => 'course.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top', 'side-cont'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),
@@ -114,7 +114,7 @@ $THEME->layouts = [
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
     'incourse' => array(
         'file' => 'incourse.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top', 'side-cont'),
         'defaultregion' => 'side-pre',
         'options' => array('nonavbar' => false, 'langmenu' => true),
     ),
@@ -189,7 +189,7 @@ $THEME->layouts = [
     // The pagelayout used for reports.
     'report' => array(
         'file' => 'columns2.php',
-        'regions' => array('side-pre'),
+        'regions' => array('side-pre', 'side-post', 'top'),
         'defaultregion' => 'side-pre',
     ),
     // The pagelayout used for safebrowser and securewindow.

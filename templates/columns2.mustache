@@ -63,6 +63,11 @@
                 {{/hasregionmainsettingsmenu}}
 
                 <section id="region-main">
+
+                    <section id="top-blocks" class="d-print-none">
+                        {{{ topblocks }}}
+                    </section>
+
                     <div class="card">
                         <div class="card-body">
                             {{#hasregionmainsettingsmenu}}
@@ -75,6 +80,11 @@
                     </div>
 
                     {{{ output.activity_navigation }}}
+
+                    <section id="sidepost-blocks" class="d-print-none">
+                        {{{ sidepostblocks }}}
+                    </section>
+
                 </section>
             </div>
         </div>

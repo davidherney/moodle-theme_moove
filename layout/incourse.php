@@ -40,6 +40,12 @@ if (isloggedin()) {
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 
+$postblockshtml = $OUTPUT->blocks('side-post');
+$topblockshtml = $OUTPUT->blocks('top');
+
+$blockscontenthtml = $OUTPUT->blocks('side-cont');
+$hascontentblocks = strpos($blockscontenthtml, 'data-block=') !== false;
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
@@ -63,7 +69,11 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'sidepreblocks' => $blockshtml,
+    'sidepostblocks' => $postblockshtml,
+    'topblocks' => $topblockshtml,
     'hasblocks' => $hasblocks,
+    'contentblocks' => $blockscontenthtml,
+    'hascontentblocks' => $hascontentblocks,
     'bodyattributes' => $bodyattributes,
     'hasdrawertoggle' => true,
     'navdraweropen' => $navdraweropen,
@@ -84,5 +94,5 @@ $templatecontext = array_merge($templatecontext, $themesettings->footer_items())
 if (isset($PAGE->cm->modname) && in_array($PAGE->cm->modname, $moduleswithnavinblocks)) {
     echo $OUTPUT->render_from_template('theme_moove/incourse', $templatecontext);
 } else {
-    echo $OUTPUT->render_from_template('theme_moove/columns2', $templatecontext);
+    echo $OUTPUT->render_from_template('theme_moove/course', $templatecontext);
 }

@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_moove/columns2
+    @template theme_moove/course
 
     Admin time setting template.
 
@@ -44,49 +44,54 @@
         "sidepreblocks": "<h2>Blocks html goes here</h2>",
         "hasblocks":true,
         "navdraweropen":true,
+        "sidepreopen":true,
         "regionmainsettingsmenu": "",
         "hasregionmainsettingsmenu": false
     }
 }}
-{{{ output.doctype }}}
-<html {{{ output.htmlattributes }}}>
-<head>
-    <title>{{{ output.page_title }}}</title>
-    <link rel="shortcut icon" href="{{{ output.favicon }}}" />
-    {{{ output.standard_head_html }}}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    {{>theme_moove/inc_start}}
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-</head>
-
-<body {{{ bodyattributes }}}>
-{{> core/local/toast/wrapper}}
-
-<div id="page-wrapper">
-
-    {{{ output.standard_top_of_body_html }}}
-
-    {{>theme_moove/header}}
-
-    <div id="page" class="container-fluid">
+    <div id="page" class="container-fluid d-print-block">
         {{{ output.full_header }}}
 
-        <div id="page-content" class="row">
-            <div id="region-main-box" class="{{#hasblocks}}col-md-9{{/hasblocks}}{{^hasblocks}}col-md-12{{/hasblocks}} col-sm-12 col-xs-12">
+        <div id="page-content" class="row pb-3 d-print-block">
+            <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
-                <div id="region-main-settings-menu" class="hidden-print">
-                    <div> {{{ output.region_main_settings_menu }}} </div>
-                </div>
+                    <div id="region-main-settings-menu" class="d-print-none">
+                        <div> {{{ output.region_main_settings_menu }}} </div>
+                    </div>
                 {{/hasregionmainsettingsmenu}}
+
                 <section id="region-main" class="{{#hascontentblocks}}hascontentblocks{{/hascontentblocks}}">
+                    {{#customcourseheader}}
+                        <div class="customcourseheader">
+                            <div class="customcourseheader_buttons">
+                            {{#options}}
+                                <a href="{{url}}" target="{{target}}" alt="{{name}}" class="{{cssclass}}">
+                                    {{name}}
+                                </a>
+                            {{/options}}
+                            </div>
+                            <div class="customcourseheader_banner">
+                                <div class="coursename">{{coursename}}</div>
+                                {{#teachername}}
+                                <div class="teacherinfo">
+                                    <label>{{#str}}teacherlabel, theme_moove{{/str}}</label>
+                                    <span>{{teachername}}</span>
+                                </div>
+                                <div class="teacherimage">
+                                    <img src="{{teacherimage}}" title="{{teachername}}" />
+                                </div>
+                                {{/teachername}}
+                            </div>
+                        </div>
+                    {{/customcourseheader}}
 
                     <section id="top-blocks" class="d-print-none">
                         {{{ topblocks }}}
                     </section>
 
-                     <div class="card">
+                    <div class="card">
                         <div class="innermain-content">
 
                             {{#hascontentblocks}}
@@ -101,38 +106,27 @@
                                 {{/hasregionmainsettingsmenu}}
                                 {{{ output.course_content_header }}}
                                 {{{ output.main_content }}}
+                                {{{ output.activity_navigation }}}
                                 {{{ output.course_content_footer }}}
                             </div>
                         </div>
                     </div>
 
-                    {{{ output.activity_navigation }}}
-
                     <section id="sidepost-blocks" class="d-print-none">
                         {{{ sidepostblocks }}}
                     </section>
 
+                    {{#customcategorybanner}}
+                        {{#src}}
+                        <div class="customcategorybanner">
+                            <img src="{{src}}" alt="{{name}}" title="{{name}}" />
+                        </div>
+                        {{/src}}
+                    {{/customcategorybanner}}
+
                 </section>
             </div>
-            {{#hasblocks}}
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                    {{{ sidepreblocks }}}
-                </div>
-            {{/hasblocks}}
         </div>
     </div>
 
-    {{> theme_moove/nav-drawer }}
-
-</div>
-
-{{> theme_moove/footer }}
-
-</body>
-</html>
-{{#js}}
-require(['theme_boost/loader']);
-require(['theme_boost/drawer'], function(mod) {
-    mod.init();
-});
-{{/js}}
+    {{>theme_moove/inc_end}}

@@ -188,6 +188,20 @@
       }
     }
   }
+
+  #region-main.hascontentblocks {
+    .innermain-content {
+      display: block;
+
+      #content-blocks {
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #e2e2e2;
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) {

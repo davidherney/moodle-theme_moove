@@ -42,6 +42,9 @@ if (isloggedin()) {
 $blockshtml = $OUTPUT->blocks('side-pre');
 $hasblocks = strpos($blockshtml, 'data-block=') !== false;
 
+$postblockshtml = $OUTPUT->blocks('side-post');
+$topblockshtml = $OUTPUT->blocks('top');
+
 $extraclasses = [];
 if ($navdraweropen) {
     $extraclasses[] = 'drawer-open-left';
@@ -57,6 +60,8 @@ $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
     'sidepreblocks' => $blockshtml,
+    'sidepostblocks' => $postblockshtml,
+    'topblocks' => $topblockshtml,
     'hasblocks' => $hasblocks,
     'bodyattributes' => $bodyattributes,
     'hasdrawertoggle' => $hasdrawertoggle,

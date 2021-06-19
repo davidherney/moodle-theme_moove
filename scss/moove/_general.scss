@@ -72,6 +72,34 @@ Pages
 
 #region-main {
     padding: 0;
+
+    &.hascontentblocks {
+        > .card {
+            padding-left: 0;
+        }
+
+        .innermain-content {
+            display: flex;
+
+            #content-blocks {
+                max-width: 350px;
+                width: 100%;
+                padding: 0 20px 0 0;
+                border-right: 2px solid #e2e2e2;
+                margin-right: 20px;
+
+                section.card {
+                    border-right: none;
+                    border-bottom: none;
+                    border-left: none;
+                }
+            }
+        }
+    }
+}
+
+#box-main_content {
+    width: 100%;
 }
 
 #page-admin-index.pagelayout-maintenance {
