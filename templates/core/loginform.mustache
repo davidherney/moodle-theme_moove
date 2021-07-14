@@ -99,15 +99,16 @@
     </div>
 {{/ logourl }}
 
-{{#error}}
-    <div class="loginerrors">
-        <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
-        <div class="alert alert-danger" role="alert">{{error}}</div>
-    </div>
-{{/error}}
-
 <div class="card loginpanel">
     <div class="card-block">
+
+        {{#error}}
+            <div class="loginerrors">
+                <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
+                <div class="alert alert-danger" role="alert">{{error}}</div>
+            </div>
+        {{/error}}
+
         {{#cansignup}}
             <div class="sr-only">
                 <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
