@@ -295,3 +295,5 @@ $string['custommenuoptionsdesc'] = 'Use the structure: capability|type|link|targ
 - link target: _blank, _self or other anchor target option, can be empty to<br />
 - firstchild: true or false';
 $string['teacherlabel'] = 'Teacher:';
+
+$string['manualauthtitle'] = 'With username and password';

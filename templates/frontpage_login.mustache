@@ -26,34 +26,11 @@
     }
 }}
 <div class="card-body">
+
     <h3>{{#str}}platform_access, theme_moove{{/str}}</h3>
-    <form class="signup-form" action="{{{ config.wwwroot }}}/login/index.php" method="POST" role="form">
-        <input type="hidden" name="logintoken" value="{{logintoken}}">
-        <label for="username">
-            {{^canloginbyemail}}
-                {{#str}}username{{/str}}
-            {{/canloginbyemail}}
-            {{#canloginbyemail}}
-                {{#str}}usernameemail{{/str}}
-            {{/canloginbyemail}}
-        </label>
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-envelope add-on"></i></div>
-            <input type="text" class="form-control" id="username" name="username" placeholder="{{#str}}username{{/str}}" required />
-        </div>
-
-        <label for="password">{{#str}}password{{/str}}</label>
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-lock add-on"></i></div>
-            <input type="password" class="form-control" id="password" name="password" placeholder="{{#str}}password{{/str}}" required />
-        </div>
-
-        <div class="sign-up-btn">
-            <button type="submit" class="btn btn-primary">{{#str}}login{{/str}}</button>
-        </div>
-    </form>
 
     {{#output.has_identity_providers}}
+    <div class="identity_providers loginmode-box">
         <h5 class="mt-2">{{#str}} potentialidps, auth {{/str}}</h5>
         <div class="potentialidplist" class="m-t-1">
             {{#output.get_identity_providers}}
@@ -67,9 +44,30 @@
                 </div>
             {{/output.get_identity_providers}}
         </div>
+    </div>
     {{/output.has_identity_providers}}
 
-    <p class="my-2"><a href="{{{ config.wwwroot }}}/login/forgot_password.php">{{#str}}forgotten{{/str}}</a></p>
+    <div class="manualauth loginmode-box">
+        <h5 class="mt-2 showmore" data-target=".manualauth .signup-form">{{#str}} manualauthtitle, theme_moove {{/str}} <i class="fa fa-sort-down icon-showform"></i></h5>
+        <form class="signup-form showmore-transition notshowmore" action="{{{ config.wwwroot }}}/login/index.php" method="POST" role="form">
+            <input type="hidden" name="logintoken" value="{{logintoken}}">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user add-on"></i></div>
+                <input type="text" class="form-control" id="username" name="username" placeholder="{{#str}}username{{/str}}" required />
+            </div>
+
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-lock add-on"></i></div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="{{#str}}password{{/str}}" required />
+            </div>
+
+            <div class="sign-up-btn">
+                <button type="submit" class="btn btn-primary">{{#str}}login{{/str}}</button>
+            </div>
+
+            <p class="my-2"><a href="{{{ config.wwwroot }}}/login/forgot_password.php">{{#str}}forgotten{{/str}}</a></p>
+        </form>
+    </div>
 
     {{#cansignup}}
         <a class="btn btn-register btn-primary" href="{{{ config.wwwroot }}}/login/signup.php?">{{#str}}newaccount{{/str}}</a>
@@ -84,3 +82,14 @@
         </form>
     {{/canloginasguest}}
 </div>
+
+{{#js}}
+require(['jquery'], function($) {
+    $('.showmore').on('click', function () {
+        var $control = $(this);
+        var $target = $($control.data('target'));
+
+        $target.toggleClass('notshowmore');
+    });
+});
+{{/js}}
